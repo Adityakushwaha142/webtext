@@ -1,0 +1,18 @@
+.outer-container{
+    background: #00bf54;
+    height:600px ; 
+    
+}
+.container{
+    background:transparent ; 
+}
+.navbar-inner{
+    background-color: transparent;
+}
+.foot{
+    background: #00bf54;
+    
+}
+.f1{
+    height:700px ; 
+}

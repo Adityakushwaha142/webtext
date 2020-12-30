@@ -2,6 +2,8 @@ let socket =io() ;
 
  $(()=>{
 
+  $("#navbar").load("../component/navbar.html") ; 
+
       $(".signup").show() ;
       $(".chat").hide() ; 
 
