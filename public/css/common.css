@@ -3,6 +3,11 @@
     height:600px ; 
     
 }
+.outer-containers{
+    background: #00bf54;
+
+    
+}
 .container{
     background:transparent ; 
 }
@@ -15,4 +20,12 @@
 }
 .f1{
     height:700px ; 
+}
+.chat{
+    background: #00bf54;
+    width:300px   ; 
+    height:665px ; 
+}
+.col2{
+    background-color:rebeccapurple
 }
