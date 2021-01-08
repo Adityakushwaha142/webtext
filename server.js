@@ -1,6 +1,7 @@
 const express= require("express") ; 
 const socketio = require("socket.io") ; 
 const http = require("http") ; 
+const path = require("path")
 const app= express() ; 
 const server= http.createServer(app) ; 
 let users ={
@@ -10,8 +11,7 @@ let socketmap={} ;
 const io = socketio(server) ; 
 
 app.set("view engine" , "hbs") ;
-app.use(express.static("public")) ;  
-
+app.use(express.static(path.join(__dirname, '/public')));
 io.on("connection" , (socket)=>{
     console.log("connecction establishes" , socket.id) ; 
 
@@ -62,14 +62,26 @@ io.on("connection" , (socket)=>{
     })
 })
 
-
-app.get("/login" , ()=>{
-    res.render("login")
+app.get("/room" , (req, res)=>{
+    res.render("room") ; 
 })
+
+
+
 app.get("/" , (req,res)=>{
     res.render("index") ; 
 })
+app.get("/login" , (req, res)=>{
+    res.render("login")
+})
+app.get("/signup"  , (req, res)=>{
+    res.render("signup") ; 
+}) 
+app.get("/chatbox"  , (req, res)=>{
+    res.render("chatbox") ; 
+})
 
-server.listen(2424, ()=>{
-    console.log("server started on http://localhost:2424")  ; 
+
+server.listen(5757, ()=>{
+    console.log("server started on http://localhost:5757")  ; 
 })
