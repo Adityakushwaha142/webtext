@@ -2,6 +2,7 @@ const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
 const path = require("path");
+const port = process.env.PORT || 5757;
 const { join } = require("path");
 const app = express();
 const server = http.createServer(app);
@@ -63,6 +64,6 @@ app.get("/chatbox", (req, res) => {
   res.render("chatbox");
 });
 
-server.listen(5757, () => {
-  console.log("server started on http://localhost:5757");
+server.listen(port, () => {
+  console.log(`server started on http://localhost:${port}`);
 });
