@@ -1,39 +1,52 @@
-/* let socket =io() ; 
+let socket = io();
+let where;
+$(() => {
+  $(".signup").show();
+  $(".chatbox").hide();
+  /*    PUBLIC JOINING                               */
+  $("#joinroom").click(() => {
+    where = $("#room").val();
+    socket.emit("signinroom", {
+      username: $("#username").val(),
+      room: $("#room").val(),
+    });
+  });
 
- $(()=>{
+  socket.on("signedin", (msg) => {
+    $("#name").text(msg.username);
+    if (msg.info) {
+      $("#way").text(msg.info);
+    } else {
+      $("#way").text(`Room : ${msg.room}`);
+    }
+    $(".signup").hide();
+    $(".chatbox").show();
+  });
 
-  $("#navbar").load("../component/navbar.html") ; 
+  /*      JOIN PUBLIC BUTTON              */
 
-      $(".signup").show() ;
-      $(".chat").hide() ; 
+  $("#joinpublic").click(() => {
+    $("#room").val("Public");
+    where = "Public";
 
+    socket.emit("signedinpublic", {
+      info: where,
+      username: $("#username").val(),
+    });
+  });
 
-         $("#signupbtn").click(()=>{
-       socket.emit("signin" , {
-           username:$("#signupemail").val(),
-           password:$("#signuppin").val()
-            })
-          })
-          socket.on("signedin" , ()=>{
-            $(".signup").hide() ;
-              $(".chat").show() ; 
+  $("#btnsend").click(() => {
+    socket.emit("msg_send", {
+      to: where,
+      msg: $("#message").val(),
+    });
+    $("#message").val("");
+  });
+  socket.on("msg_rcvd", (data) => {
+    $("#ul").append($("<li>").text(` ${data.from} : ${data.msg}`));
+  });
 
-              })
-        $("#btnsend").click(()=>{
-        socket.emit("msg_send", {
-   
-       to: $("#everyone").val() ,   
-       msg:$("#message").val() 
-   })
-    
- })
- socket.on("msg_rcvd" , (data)=>{
-     $("#ul").append($("<li>").text(`${data.from} : ${data.msg}`)) ; 
- })
-
-
- socket.on("login_failed", ()=>{
-     window.alert("Incorrect username or password ") ; 
- })
-             })
-            */
+  socket.on("login_failed", () => {
+    window.alert("Incorrect username or password ");
+  });
+});

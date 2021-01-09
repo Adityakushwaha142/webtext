@@ -1,38 +1,40 @@
-.outer-container{
-    background: #00bf54;
-    height:600px ; 
-    
+body {
+  font-family: "Open Sans", sans-serif;
 }
-.outer-containers{
-    background: #00bf54;
-   
-    
+
+.outer-container {
+  background: #00bf54;
+  height: 600px;
 }
-.outercontainer{
-    background: #00bf54;
+.outer-containers {
+  background: #00bf54;
 }
-.container{
-    background:transparent ; 
+.outercontainer {
+  background: #00bf54;
 }
-.navbar-inner{
-    background-color: transparent;
+.container {
+  background: transparent;
 }
-.foot{
-    background: #00bf54;
-    
+.navbar-inner {
+  background-color: transparent;
 }
-.f1{
-    height:700px ; 
+.foot {
+  background: #00bf54;
 }
-.chat{
-    background: #00bf54;
-    width:300px   ; 
-    height:665px ; 
+.f1 {
+  height: 700px;
 }
-.col2{
-    background-color:rebeccapurple
+.chat {
+  background: #00bf54;
 }
-.room{
-    background-color: #00bf54;
-    height:755px
+.col2 {
+  background-color: rebeccapurple;
+}
+.room {
+  background-color: #00bf54;
+  height: 755px;
+}
+.message {
+  overflow: scroll;
+  overflow-x: hidden;
 }
